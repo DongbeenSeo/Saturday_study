@@ -1,0 +1,51 @@
+.App {
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 5vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 18px;
+  color: white;
+  padding-left: 30px;
+}
+
+.App-main {
+  padding-left: 40px;
+  padding-top: 15px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.todo-text {
+  min-width: 100px;
+}
+
+.complete {
+  color: red;
+  text-decoration: line-through;
+}
+
+.complete-btn {
+  margin-left: 10px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
