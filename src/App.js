@@ -21,6 +21,26 @@ class App extends Component {
     newTodoBody: ""
   };
 
+  handleInputChange = e => {
+    this.setState({
+      newTodoBody: e.target.value
+    });
+  };
+
+  handleBtnClick = e => {
+    if (this.state.newTodoBody) {
+      const newTodo = {
+        body: this.state.newTodoBody,
+        complete: false,
+        id: count++
+      };
+      this.setState({
+        todos: [...this.state.todos, newTodo],
+        newTodoBody: ""
+      });
+    }
+  };
+
   render() {
     const { todos, newTodoBody } = this.state;
     return (
@@ -30,12 +50,19 @@ class App extends Component {
           <p>React TodoList</p>
         </header>
         <main className="App-main">
+          <label>
+            새 할일
+            <input
+              type="text"
+              value={newTodoBody}
+              onChange={this.handleInputChange}
+            />
+            <button onClick={this.handleBtnClick}>추가</button>
+          </label>
           <ol>
             {todos.map(todo => (
               <li className={todo.complete ? "complete" : ""} key={todo.id}>
-                <text className="todo-text">
-                  {`${todo.body} ${todo.complete}`}
-                </text>
+                <text className="todo-text">{`${todo.body}`}</text>
                 <button
                   className="complete-btn"
                   onClick={e => {
@@ -53,6 +80,15 @@ class App extends Component {
                   }}
                 >
                   완료
+                </button>
+                <button
+                  onClick={e => {
+                    this.setState({
+                      todos: todos.filter(t => t.id !== todo.id)
+                    });
+                  }}
+                >
+                  삭제
                 </button>
               </li>
             ))}
