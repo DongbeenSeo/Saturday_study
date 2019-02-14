@@ -62,7 +62,25 @@ class App extends Component {
           <ol>
             {todos.map(todo => (
               <li className={todo.complete ? "complete" : ""} key={todo.id}>
-                <text className="todo-text">{`${todo.body}`}</text>
+                <span
+                  onClick={e => {
+                    console.log(todos);
+                    const newBody = prompt("please input");
+                    this.setState({
+                      todos: todos.map(t => {
+                        const newTodo = {
+                          ...t
+                        };
+                        if (t.id === todo.id) {
+                          newTodo.body = newBody;
+                        }
+                        return newTodo;
+                      })
+                    });
+                    console.log(todos);
+                  }}
+                  className="todo-text"
+                >{`${todo.body}`}</span>
                 <button
                   className="complete-btn"
                   onClick={e => {
